@@ -1,0 +1,16 @@
+spring:
+  mail:
+    host: smtp.mail.ru
+    port: 465
+    username: kiril.bondarev.96@mail.ru
+    password: kNWexbSapfUZSCNJh0zt
+    properties:
+      mail:
+        smtps:
+          auth: true
+          starttls:
+            enable: true
+          debug: true
+    protocol: smtps
+server:
+  port: 8088

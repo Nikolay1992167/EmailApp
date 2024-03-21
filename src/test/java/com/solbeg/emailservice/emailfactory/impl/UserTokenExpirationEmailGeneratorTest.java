@@ -1,0 +1,44 @@
+package com.solbeg.emailservice.emailfactory.impl;
+
+import com.solbeg.emailservice.model.EmailRequest;
+import com.solbeg.emailservice.util.EmailRequestTestData;
+import com.solbeg.emailservice.util.MimeMessagePreparatorTestData;
+import jakarta.mail.internet.MimeMessage;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessagePreparator;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+@SpringBootTest
+class UserTokenExpirationEmailGeneratorTest {
+
+
+    @Autowired
+    private JavaMailSender javaMailSender;
+
+    private final UserTokenExpirationEmailGenerator tokenExpirationEmailGenerator = new UserTokenExpirationEmailGenerator();
+
+    @Test
+    void shouldReturnExpectedMimeMessagePreparatorForExpirationUserToken() throws Exception {
+        // given
+        EmailRequest emailRequest = EmailRequestTestData.builder()
+                .build()
+                .getEmailRequest();
+        MimeMessagePreparator expected = MimeMessagePreparatorTestData.getMimeMessagePreparatorForExpirationUserTokenMessage();
+        MimeMessage expectedMessage = javaMailSender.createMimeMessage();
+        expected.prepare(expectedMessage);
+
+        // when
+        MimeMessagePreparator actual = tokenExpirationEmailGenerator.generateEmail(emailRequest);
+        MimeMessage actualMessage = javaMailSender.createMimeMessage();
+        actual.prepare(actualMessage);
+
+        // then
+        assertThat(actualMessage.getSubject()).isEqualTo(expectedMessage.getSubject());
+        assertThat(actualMessage.getFrom()).isEqualTo(expectedMessage.getFrom());
+        assertThat(actualMessage.getAllRecipients()).isEqualTo(expectedMessage.getAllRecipients());
+    }
+}
