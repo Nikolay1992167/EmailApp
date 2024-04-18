@@ -12,9 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class EmailServiceImpl implements EmailService {
-
     private final JavaMailSender emailSender;
-
     private final EmailGeneratorFactory emailGeneratorFactory;
 
     public void sendEmailWithData(EmailRequest request) {

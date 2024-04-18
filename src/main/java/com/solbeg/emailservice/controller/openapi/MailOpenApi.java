@@ -9,7 +9,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.http.ResponseEntity;
 
 @Tag(name = "EmailSend", description = "Send Email Api")
 public interface MailOpenApi {
@@ -49,5 +48,5 @@ public interface MailOpenApi {
                                     """)))
             }
     )
-    ResponseEntity<String> sendUserData(EmailRequest emailRequest);
+    void sendUserData(EmailRequest emailRequest);
 }

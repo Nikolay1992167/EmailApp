@@ -4,7 +4,6 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class Constants {
-
     public static String USER_FROM_SEND = "kiril.bondarev.96@mail.ru";
     public static String USER_ADMIN = "wulik1081@mail.ru";
     public static String SUBJECT_ACTIVATION = "Journalist Access Request";

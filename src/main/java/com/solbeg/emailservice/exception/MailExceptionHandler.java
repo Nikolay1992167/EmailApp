@@ -23,11 +23,11 @@ public class MailExceptionHandler {
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
-        return getResponse(errors.toString(), HttpStatus.BAD_REQUEST);
+        return getResponse(errors.toString());
     }
 
-    private static ResponseEntity<IncorrectData> getResponse(String message, HttpStatus status) {
-        IncorrectData incorrectData = new IncorrectData(LocalDateTime.now(), message, status.value());
-        return ResponseEntity.status(status).body(incorrectData);
+    private ResponseEntity<IncorrectData> getResponse(String message) {
+        IncorrectData incorrectData = new IncorrectData(LocalDateTime.now(), message, HttpStatus.BAD_REQUEST.value());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(incorrectData);
     }
 }

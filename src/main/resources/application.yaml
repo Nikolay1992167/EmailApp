@@ -1,9 +1,9 @@
 spring:
   mail:
-    host: smtp.mail.ru
-    port: 465
-    username: kiril.bondarev.96@mail.ru
-    password: kNWexbSapfUZSCNJh0zt
+    host: ${MAIL_HOST:smtp.mail.ru}
+    port: ${MAIL_PORT:465}
+    username: ${USER_EMAIL:kiril.bondarev.96@mail.ru}
+    password: ${USER_PASSWORD:kNWexbSapfUZSCNJh0zt}
     properties:
       mail:
         smtps:
@@ -13,4 +13,4 @@ spring:
           debug: true
     protocol: smtps
 server:
-  port: 8088
+  port: ${SERVER_PORT:8088}

@@ -32,6 +32,7 @@ class MailControllerTest {
 
     private static final String EMAIL_INCORRECT = "mail.ru";
 
+
     @Test
     void shouldCheckSendUserDataSuccess() throws Exception {
         // given
