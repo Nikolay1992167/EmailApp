@@ -31,13 +31,11 @@ public interface MailOpenApi {
                                             "lastName": "Minich"
                                         }
                                     }
-                                    """)
-                    )
-            ),
+                                    """))),
             responses = {
                     @ApiResponse(
-                            responseCode = "200", description = "The endpoint has been completed."),
-                    @ApiResponse(responseCode = "400", description = "The endpoint has not been completed because an email is incorrect",
+                            responseCode = "200", description = "Message is send."),
+                    @ApiResponse(responseCode = "400", description = "Email is incorrect.",
                             content = @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = IncorrectData.class), examples = @ExampleObject("""
                                             {

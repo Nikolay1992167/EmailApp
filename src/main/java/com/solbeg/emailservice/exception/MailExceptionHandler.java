@@ -15,6 +15,11 @@ import java.util.Map;
 @RestControllerAdvice
 public class MailExceptionHandler {
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<IncorrectData> exception(Exception exception) {
+        return getResponse(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<IncorrectData> handleValidationExceptions(MethodArgumentNotValidException exception) {
         Map<String, String> errors = new LinkedHashMap<>();
@@ -23,11 +28,11 @@ public class MailExceptionHandler {
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
-        return getResponse(errors.toString());
+        return getResponse(errors.toString(), HttpStatus.BAD_REQUEST);
     }
 
-    private ResponseEntity<IncorrectData> getResponse(String message) {
-        IncorrectData incorrectData = new IncorrectData(LocalDateTime.now(), message, HttpStatus.BAD_REQUEST.value());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(incorrectData);
+    private static ResponseEntity<IncorrectData> getResponse(String message, HttpStatus status) {
+        IncorrectData incorrectData = new IncorrectData(LocalDateTime.now(), message, status.value());
+        return ResponseEntity.status(status).body(incorrectData);
     }
 }
