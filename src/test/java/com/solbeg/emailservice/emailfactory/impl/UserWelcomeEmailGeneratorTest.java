@@ -23,9 +23,7 @@ class UserWelcomeEmailGeneratorTest {
     @Test
     void shouldReturnExpectedMimeMessagePreparatorForExpirationUserToken() throws Exception {
         // given
-        EmailRequest emailRequest = EmailRequestTestData.builder()
-                .build()
-                .getEmailRequest();
+        EmailRequest emailRequest = EmailRequestTestData.getEmailRequest();
         MimeMessagePreparator expected = MimeMessagePreparatorTestData.getMimeMessagePreparatorForWelcomeMessage();
         MimeMessage expectedMessage = javaMailSender.createMimeMessage();
         expected.prepare(expectedMessage);

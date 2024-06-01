@@ -18,9 +18,7 @@ import static com.solbeg.emailservice.util.Constants.USER_FROM_SEND;
 public class MimeMessagePreparatorTestData {
 
     public static MimeMessagePreparator getMimeMessagePreparatorForActivation() {
-        EmailRequest emailRequest = EmailRequestTestData.builder()
-                .build()
-                .getEmailRequest();
+        EmailRequest emailRequest = EmailRequestTestData.getEmailRequest();
         return mimeMessage -> {
             MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
             message.setFrom(USER_FROM_SEND);
@@ -34,9 +32,7 @@ public class MimeMessagePreparatorTestData {
     }
 
     public static MimeMessagePreparator getMimeMessagePreparatorForExpirationUserTokenMessage() {
-        EmailRequest emailRequest = EmailRequestTestData.builder()
-                .build()
-                .getEmailRequest();
+        EmailRequest emailRequest = EmailRequestTestData.getEmailRequest();
         return mimeMessage -> {
             MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
             message.setFrom(USER_FROM_SEND);
@@ -47,9 +43,7 @@ public class MimeMessagePreparatorTestData {
     }
 
     public static MimeMessagePreparator getMimeMessagePreparatorForWelcomeMessage() {
-        EmailRequest emailRequest = EmailRequestTestData.builder()
-                .build()
-                .getEmailRequest();
+        EmailRequest emailRequest = EmailRequestTestData.getEmailRequest();
         return mimeMessage -> {
             MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
             message.setFrom(USER_FROM_SEND);

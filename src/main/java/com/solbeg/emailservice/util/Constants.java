@@ -12,5 +12,8 @@ public class Constants {
     public static String MESSAGE_TOKEN_EXPIRATION = "Hello, your token is expired.";
     public static String MESSAGE_ACTIVATION = "A journalist named %s %s has requested access to the system. To activate their account, please click the following link: <a href=\"%s\">Activate account</a>";
     public static String MESSAGE_WELCOME = "Hello %s %s, We have confirmed your access to our system, and you can now log in.";
-
+    public static final String ACTIVATION_QUEUE_NAME = "activation-queue";
+    public static final String INFORMATION_QUEUE_NAME = "information-queue";
+    public static String EXCHANGE_DEAD_LETTER = "deadLetterExchange";
+    public static String ROUTING_KEY_DLQ = "deadLetter";
 }
