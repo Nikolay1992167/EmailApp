@@ -1,6 +1,7 @@
 # Email Service
 
-A service that sends messages to the user's email according to the type.
+* A service that sends messages to the user's email according to the type.
+* This service works in conjunction with other services: config service, user service and news service.
 
 ### Technologies that I used on the project:
 
